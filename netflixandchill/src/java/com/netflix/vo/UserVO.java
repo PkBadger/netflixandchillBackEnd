@@ -8,10 +8,20 @@ public class UserVO implements Serializable
     private String username;
     private String phone;
     private String password;
+    private String ImageL;
 
     /**
      * @return the id
      */
+    public String getImage()
+    {
+        return ImageL;
+    }
+    public void setImage(String img)
+    {
+        this.ImageL = img;
+    }
+    
     public String getId()
     {
         return id;
@@ -63,6 +73,11 @@ public class UserVO implements Serializable
     public void setPassword(String password)
     {
         this.password = password;
+    }
+    
+    public String getPassword()
+    {
+        return password;
     }
     
     @Override

@@ -20,7 +20,42 @@ public class MovieDao {
             /* EXAMEN */
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ejemplo?user=root&password=admin");
-            PreparedStatement pstmt = conn.prepareStatement("SELECT id, title,genre FROM movie ORDER BY id");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT id, title,genre FROM movie ORDER BY title");
+            ResultSet rs = pstmt.executeQuery();
+            //Se itera sobre el ResultSet, tomando los parametros
+            while (rs.next()) {
+                //Se crea la Perona y se establecen sus parametros
+                MovieVO movie = new MovieVO();
+                movie.setId(rs.getString(1));
+                movie.setTitle(rs.getString(2));
+                movie.setGenre(rs.getString(3));
+                //Es necesario añadirla al array de personas
+                movies.add(movie);
+            }
+            //SE CIERRAN CONEXIONES, ES NECESARIO
+            rs.close();
+            pstmt.close();
+            conn.close();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movies;
+    }
+    
+     public List<MovieVO> findByGenre(final String Genre) {
+        List<MovieVO> movies = new ArrayList<MovieVO>();
+        try {
+            /* EXAMEN */
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ejemplo?user=root&password=admin");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT id, title,genre FROM movie WHERE movie.genre = ? ORDER BY title");
+            pstmt.setString(1, Genre);
             ResultSet rs = pstmt.executeQuery();
             //Se itera sobre el ResultSet, tomando los parametros
             while (rs.next()) {

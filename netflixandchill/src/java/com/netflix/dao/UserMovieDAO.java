@@ -187,7 +187,7 @@ public class UserMovieDAO {
         
         
     }
-    
+ /*   
     public void update(final String id, final String userId,final String movieId) {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -212,7 +212,7 @@ public class UserMovieDAO {
             e.printStackTrace();
         }
         
-    }
+    }*/
     
 
 }
