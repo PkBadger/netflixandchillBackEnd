@@ -3,8 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Alejandro/Documents/NetBeansProjects/netflixandchill/src/java/com/netflix/vo/UserVO.java</file>
-            <file>file:/C:/Users/Alejandro/Documents/NetBeansProjects/netflixandchill/src/java/com/netflix/vo/MovieVO.java</file>
+            <file>file:/C:/Users/Badger/Downloads/netflixandchill/netflixandchill/src/java/com/netflix/vo/MovieVO.java</file>
+            <file>file:/C:/Users/Badger/Downloads/netflixandchill/netflixandchill/src/java/com/netflix/vo/UserVO.java</file>
+            <file>file:/C:/Users/Badger/Downloads/netflixandchill/netflixandchill/src/java/com/netflix/dao/MovieDao.java</file>
+            <file>file:/C:/Users/Badger/Downloads/netflixandchill/netflixandchill/src/java/com/netflix/dao/UserDao.java</file>
+            <file>file:/C:/Users/Badger/Downloads/netflixandchill/netflixandchill/src/java/com/netflix/vo/UserMovieVO.java</file>
+            <file>file:/C:/Users/Badger/Downloads/netflixandchill/netflixandchill/src/java/com/netflix/dao/UserMovieDAO.java</file>
+            <file>file:/C:/Users/Badger/Downloads/netflixandchill/netflixandchill/src/java/com/netflix/manager/MovieManager.java</file>
+            <file>file:/C:/Users/Badger/Downloads/netflixandchill/netflixandchill/src/java/com/netflix/manager/UserManager.java</file>
+            <file>file:/C:/Users/Badger/Downloads/netflixandchill/netflixandchill/src/java/com/netflix/manager/UserMovieManager.java</file>
         </group>
     </open-files>
 </project-private>
