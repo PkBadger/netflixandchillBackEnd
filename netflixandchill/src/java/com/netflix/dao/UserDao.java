@@ -21,7 +21,7 @@ public class UserDao {
             /* EXAMEN */
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ejemplo?user=root&password=admin");
-            PreparedStatement pstmt = conn.prepareStatement("SELECT id, username,phone,image FROM user ORDER BY username");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT id, username,phone,email FROM user ORDER BY username");
             ResultSet rs = pstmt.executeQuery();
             //Se itera sobre el ResultSet, tomando los parametros
             while (rs.next()) {
@@ -30,7 +30,7 @@ public class UserDao {
                 user.setId(rs.getString(1));
                 user.setUsername(rs.getString(2));
                 user.setPhone(rs.getString(3));
-                user.setImage(rs.getString(4));
+                user.setEmail(rs.getString(4));
                 
                 //Es necesario añadirla al array de personas
                 users.add(user);
@@ -63,7 +63,7 @@ public class UserDao {
             /* EXAMEN */
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ejemplo?user=root&password=admin");
-            PreparedStatement pstmt = conn.prepareStatement("SELECT id, username,phone,image  FROM user WHERE user.id =?");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT id, username,phone,email  FROM user WHERE user.id =?");
             //Se realiza el statement SQL, se pasa el id 1 a persona.id
             pstmt.setString(1, id);
             ResultSet rs = pstmt.executeQuery(); //SE EJECUTA EL QUERY
@@ -73,7 +73,7 @@ public class UserDao {
                 user.setId(rs.getString(1));
                 user.setUsername(rs.getString(2));
                 user.setPhone(rs.getString(3));
-                user.setImage(rs.getString(4));
+                user.setEmail(rs.getString(4));
             }
         } catch (InstantiationException e) {
             e.printStackTrace();
@@ -90,7 +90,7 @@ public class UserDao {
     
    
     
-   public UserVO create(final String id, final String username, final String phone, final String password, final String Image) {
+   public UserVO create(final String id, final String username, final String phone, final String password, final String Email) {
       UserVO user = new UserVO();
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -100,16 +100,17 @@ public class UserDao {
             user.setUsername(username);
             user.setPhone(phone);
             user.setPassword(password);
+            user.setEmail(Email);
 
             
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ejemplo?user=root&password=admin");
-            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO user (username, phone,password,image) "
+            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO user (username, phone,password,email) "
                     + "                                      VALUES (?, ?, ?, ?)");
             //Se realiza el statement SQL, se pasa el id 1 a persona.id
             pstmt.setString(1, username);
             pstmt.setString(2, phone);
             pstmt.setString(3, password);
-            pstmt.setString(4, Image);
+            pstmt.setString(4, Email);
             pstmt.executeUpdate(); //SE EJECUTA EL QUERY
             pstmt.close();
             conn.close();
@@ -122,7 +123,7 @@ public class UserDao {
                 user.setUsername(rs2.getString(2));
                 user.setPhone(rs2.getString(3));
                 user.setPassword(rs2.getString(4));
-                user.setImage(rs2.getString(5));
+                user.setEmail(rs2.getString(5));
             }
             rs2.close();
            

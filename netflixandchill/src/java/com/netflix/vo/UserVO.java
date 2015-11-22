@@ -8,18 +8,18 @@ public class UserVO implements Serializable
     private String username;
     private String phone;
     private String password;
-    private String ImageL;
+    private String email;
 
     /**
      * @return the id
      */
-    public String getImage()
+    public String getEmail()
     {
-        return ImageL;
+        return email;
     }
-    public void setImage(String img)
+    public void setEmail(String correo)
     {
-        this.ImageL = img;
+        this.email = correo;
     }
     
     public String getId()

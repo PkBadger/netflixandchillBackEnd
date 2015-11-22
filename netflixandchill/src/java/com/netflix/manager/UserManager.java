@@ -32,6 +32,6 @@ public class UserManager
 
     public void create(final UserVO user) {
        UserDao dao = new UserDao();
-       dao.create(user.getId(), user.getUser(), user.getPhone(),user.getPassword(), user.getImage());
+       dao.create(user.getId(), user.getUser(), user.getPhone(),user.getPassword(), user.getEmail());
     }
 }
