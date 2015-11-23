@@ -15,6 +15,7 @@ import com.netflix.vo.UserVO;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.regex.Matcher;
@@ -74,12 +75,19 @@ public class ChillToServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ChillManager manager = new ChillManager();
+        UserManager umanager = new UserManager();
         PrintWriter out = response.getWriter();
         try {
           RestRequest resourceValues = new RestRequest(request.getPathInfo());
           int id = resourceValues.getId();
           List<ChillVO> movies = manager.findTo(String.valueOf(id));
-          String json = new Gson().toJson(movies);
+          List<UserVO> users = new ArrayList<UserVO>();
+          for(int i = 0;i<movies.size();i++)
+          {
+              UserVO usuario = umanager.findById(movies.get(i).getTo());
+              users.add(usuario);
+          }
+          String json = new Gson().toJson(users);
           out.println(json);
         } catch (ServletException e) {
           response.setStatus(400);

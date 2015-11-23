@@ -88,7 +88,37 @@ public class UserDao {
         return user;
     }
     
-   
+    public UserVO findById(final String id) {
+        //ENCUENTRA POR ID LA RESPECTIVA PERSONA EN LA DATABASE
+        UserVO user = null;
+        try {
+            /* EXAMEN */
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ejemplo?user=root&password=admin");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT id, username,phone,email  FROM user WHERE user.id =?");
+            //Se realiza el statement SQL, se pasa el id 1 a persona.id
+            pstmt.setString(1, id);
+            ResultSet rs = pstmt.executeQuery(); //SE EJECUTA EL QUERY
+            user = null;
+            while (rs.next()) {
+                user = new UserVO();
+                user.setId(rs.getString(1));
+                user.setUsername(rs.getString(2));
+                user.setPhone(rs.getString(3));
+                user.setEmail(rs.getString(4));
+            }
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        //Si no hay errores, se regresa la persona creada
+        return user;
+    }
     
    public UserVO create(final String id, final String username, final String phone, final String password, final String Email) {
       UserVO user = new UserVO();

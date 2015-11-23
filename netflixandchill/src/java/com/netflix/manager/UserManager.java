@@ -20,7 +20,13 @@ public class UserManager
         return user;
     }
     
-    
+    public UserVO findById(final String name)
+    {
+        UserDao dao = new UserDao();
+        UserVO user = dao.findById(name);
+        
+        return user;
+    }    
     
     public List<UserVO> listar ()
     {

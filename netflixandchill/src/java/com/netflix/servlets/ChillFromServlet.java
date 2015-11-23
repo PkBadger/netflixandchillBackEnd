@@ -8,10 +8,13 @@ package com.netflix.servlets;
 import com.google.gson.Gson;
 import com.netflix.manager.ChillManager;
 import com.netflix.manager.UserMovieManager;
+import com.netflix.manager.UserManager;
 import com.netflix.vo.ChillVO;
 import com.netflix.vo.UserMovieVO;
+import com.netflix.vo.UserVO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -70,12 +73,19 @@ public class ChillFromServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ChillManager manager = new ChillManager();
+        UserManager umanager = new UserManager();
         PrintWriter out = response.getWriter();
         try {
           RestRequest resourceValues = new RestRequest(request.getPathInfo());
           int id = resourceValues.getId();
           List<ChillVO> movies = manager.findFrom(String.valueOf(id));
-          String json = new Gson().toJson(movies);
+           List<UserVO> users = new ArrayList<UserVO>();
+          for(int i = 0;i<movies.size();i++)
+          {
+              UserVO usuario = umanager.findById(movies.get(i).getFrom());
+              users.add(usuario);
+          }
+          String json = new Gson().toJson(users);
           out.println(json);
         } catch (ServletException e) {
           response.setStatus(400);
