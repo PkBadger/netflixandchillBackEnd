@@ -8,6 +8,8 @@ package com.netflix.servlets;
 import com.google.gson.Gson;
 import com.netflix.manager.UserMovieManager;
 import com.netflix.vo.UserMovieVO;
+import com.netflix.manager.UserManager;
+import com.netflix.vo.UserVO;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
