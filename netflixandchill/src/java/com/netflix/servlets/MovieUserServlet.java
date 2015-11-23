@@ -8,9 +8,11 @@ package com.netflix.servlets;
 import com.google.gson.Gson;
 import com.netflix.manager.UserMovieManager;
 import com.netflix.vo.UserMovieVO;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.servlet.ServletException;
@@ -23,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Alejandro
  */
-@WebServlet(name = "MovieUserServlet", urlPatterns = {"/findByMovie/*"})
+@WebServlet(name = "MovieUserServlet", urlPatterns = {"/movies/*"})
 public class MovieUserServlet extends HttpServlet {
 
       
@@ -72,7 +74,7 @@ public class MovieUserServlet extends HttpServlet {
         try {
           RestRequest resourceValues = new RestRequest(request.getPathInfo());
           int id = resourceValues.getId();
-          List<UserMovieVO> movies = manager.findByMovie(String.valueOf(id));
+          List<UserMovieVO> movies = manager.findByUser(String.valueOf(id));
           String json = new Gson().toJson(movies);
           out.println(json);
         } catch (ServletException e) {
@@ -100,18 +102,16 @@ public class MovieUserServlet extends HttpServlet {
             throws ServletException, IOException {
          UserMovieManager manager = new UserMovieManager();
          PrintWriter out = response.getWriter();
-                 try {
-          RestRequest resourceValues = new RestRequest(request.getPathInfo());
-          int id = resourceValues.getId();
-          UserMovieVO userMovie = new UserMovieVO();
-          userMovie.setMovieId(String.valueOf(id));
-          out.println("MovieUser added.");
-        } catch (ServletException e) {
-          response.setStatus(400);
-          response.resetBuffer();
-          e.printStackTrace();
-          out.println(e.toString());
-        }
+         BufferedReader br = request.getReader();
+         Gson gson = new Gson();
+         Properties data = gson.fromJson(br, Properties.class);
+         String movieId = data.getProperty("movieId");
+         String userid = data.getProperty("usrId");
+         UserMovieVO userMovie = new UserMovieVO();
+         userMovie.setMovieId(String.valueOf(movieId));
+         userMovie.setUserId(String.valueOf(userid));
+         String json = new Gson().toJson(userMovie);
+          out.println(json);
         out.close();      
     }
     @Override
@@ -123,7 +123,7 @@ public class MovieUserServlet extends HttpServlet {
           RestRequest resourceValues = new RestRequest(request.getPathInfo());
           int id = resourceValues.getId();
           manager.eliminar(String.valueOf(id));
-          out.println("MovieUser deleted.");
+          out.println("Movie deleted.");
         } catch (ServletException e) {
           response.setStatus(400);
           response.resetBuffer();
