@@ -146,5 +146,21 @@ public class ChillToServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    public static void main ( String args []) {
+        ChillManager manager = new ChillManager();
+        UserManager umanager = new UserManager();
+        List<ChillVO> movies = manager.findTo(String.valueOf(2));
+          List<UserVO> users = new ArrayList<UserVO>();
+
+          for(int i = 0;i<movies.size();i++)
+          {
+              UserVO usuario = umanager.findById(movies.get(i).getTo());
+              users.add(usuario);
+          }
+          String json = new Gson().toJson(users);
+          System.out.println(json);
+    }
+    
 
 }

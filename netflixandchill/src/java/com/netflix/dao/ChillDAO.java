@@ -20,7 +20,7 @@ public class ChillDAO {
             /* EXAMEN */
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ejemplo?user=root&password=admin");
-            PreparedStatement pstmt = conn.prepareStatement("SELECT id, from_id,to_id FROM chill WHERE chill.from_id =?");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT id, from_id,to_id FROM chill WHERE chill.to_id =?");
             pstmt.setString(1, id);
             ResultSet rs = pstmt.executeQuery();
             //Se itera sobre el ResultSet, tomando los parametros
@@ -56,7 +56,7 @@ public class ChillDAO {
             /* EXAMEN */
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ejemplo?user=root&password=admin");
-            PreparedStatement pstmt = conn.prepareStatement("SELECT id, from_id,to_id FROM chill WHERE chill.to_id =?");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT id, from_id,to_id FROM chill WHERE chill.from_id =?");
             pstmt.setString(1, id);
             ResultSet rs = pstmt.executeQuery();
             //Se itera sobre el ResultSet, tomando los parametros
