@@ -30,8 +30,8 @@ public class UserServlet extends HttpServlet {
     
     private class RestRequest {
     // Accommodate two requests, one for all resources, another for a specific resource
-    private Pattern regExAllPattern = Pattern.compile("/users");
-    private Pattern regExIdPattern = Pattern.compile("/users/([0-9]*)");
+    private Pattern regExAllPattern = Pattern.compile("/");
+    private Pattern regExIdPattern = Pattern.compile("/([0-9]*)");
  
     private Integer id;
  

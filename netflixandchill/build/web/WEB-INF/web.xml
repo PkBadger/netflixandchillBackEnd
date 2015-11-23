@@ -34,7 +34,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MovieUserServlet</servlet-name>
-        <url-pattern>/findByMovie/*</url-pattern>
+        <url-pattern>/movies/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ChillFromServlet</servlet-name>
