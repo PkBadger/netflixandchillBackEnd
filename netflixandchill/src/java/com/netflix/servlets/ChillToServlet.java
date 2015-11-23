@@ -150,7 +150,7 @@ public class ChillToServlet extends HttpServlet {
     public static void main ( String args []) {
         ChillManager manager = new ChillManager();
         UserManager umanager = new UserManager();
-        List<ChillVO> movies = manager.findTo(String.valueOf(2));
+        List<ChillVO> movies = manager.findTo(String.valueOf(1));
           List<UserVO> users = new ArrayList<UserVO>();
 
           for(int i = 0;i<movies.size();i++)
