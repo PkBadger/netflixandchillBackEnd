@@ -110,8 +110,9 @@ public class MovieUserServlet extends HttpServlet {
          UserMovieVO userMovie = new UserMovieVO();
          userMovie.setMovieId(String.valueOf(movieId));
          userMovie.setUserId(String.valueOf(userid));
+         manager.create(userMovie);
          String json = new Gson().toJson(userMovie);
-          out.println(json);
+         out.println(json);
         out.close();      
     }
     @Override

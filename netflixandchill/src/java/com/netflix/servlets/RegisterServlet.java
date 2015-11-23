@@ -53,6 +53,7 @@ public class RegisterServlet extends HttpServlet {
          user.setPassword(password);
          user.setEmail(email);
          user.setPhone(phone);
+         manager.create(user);
          String json = new Gson().toJson(user);
          out.println(json);
          out.close();
@@ -72,7 +73,11 @@ public class RegisterServlet extends HttpServlet {
     
     public static void main(String args[]) {
         UserManager managers = new UserManager();
-        UserVO user = managers.consultar(String.valueOf('1'));
-        System.out.println(user);
+         UserVO user = new UserVO();
+         user.setUsername("test");
+         user.setPassword("test");
+         user.setEmail("test");
+         user.setPhone("test");
+         managers.create(user);
     }
 }
