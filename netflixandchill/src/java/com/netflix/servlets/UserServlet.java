@@ -20,11 +20,12 @@ import com.netflix.manager.UserManager;
 import com.netflix.vo.UserVO;
 import java.io.BufferedReader;
 import java.util.List;
+import java.util.Properties;
 /**
  *
  * @author Alejandro
  */
-@WebServlet(name = "UserServlet", urlPatterns = {"/api/*"})
+@WebServlet(name = "UserServlet", urlPatterns = {"/login/*"})
 public class UserServlet extends HttpServlet {
     
     private class RestRequest {
@@ -104,14 +105,16 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+         UserManager manager = new UserManager();
          PrintWriter out = response.getWriter();
-         StringBuilder sb = new StringBuilder();
          BufferedReader br = request.getReader();
-         String str;
-         while( (str = br.readLine()) != null ){
-             sb.append(str);
-         }  
-         out.println(sb);
+         Gson gson = new Gson();
+         Properties data = gson.fromJson(br, Properties.class);
+         String username = data.getProperty("name");
+         String password = data.getProperty("password");
+         UserVO user = manager.consultar(String.valueOf(username));
+         String json = new Gson().toJson(user);
+         out.println(json);
          out.close();
          
         

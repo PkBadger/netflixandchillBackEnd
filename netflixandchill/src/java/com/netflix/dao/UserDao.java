@@ -56,14 +56,14 @@ public class UserDao {
         System.out.println(dao.findById("1"));
     }*/
 
-    public UserVO findById(final String id) {
+    public UserVO findByName(final String id) {
         //ENCUENTRA POR ID LA RESPECTIVA PERSONA EN LA DATABASE
         UserVO user = null;
         try {
             /* EXAMEN */
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ejemplo?user=root&password=admin");
-            PreparedStatement pstmt = conn.prepareStatement("SELECT id, username,phone,email  FROM user WHERE user.id =?");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT id, username,phone,email  FROM user WHERE user.username =?");
             //Se realiza el statement SQL, se pasa el id 1 a persona.id
             pstmt.setString(1, id);
             ResultSet rs = pstmt.executeQuery(); //SE EJECUTA EL QUERY

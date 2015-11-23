@@ -26,7 +26,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>
-        <url-pattern>/api/*</url-pattern>
+        <url-pattern>/login/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MovieUserServlet</servlet-name>
@@ -34,11 +34,11 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ChillFromServlet</servlet-name>
-        <url-pattern>/findFrom/*</url-pattern>
+        <url-pattern>/matchedBy/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ChillToServlet</servlet-name>
-        <url-pattern>/findTo/*</url-pattern>
+        <url-pattern>/matchedTo/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

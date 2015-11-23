@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Alejandro
  */
-@WebServlet(name = "ChillFromServlet", urlPatterns = {"/findFrom/*"})
+@WebServlet(name = "ChillFromServlet", urlPatterns = {"/matchedBy/*"})
 public class ChillFromServlet extends HttpServlet {
 
       

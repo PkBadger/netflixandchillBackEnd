@@ -12,10 +12,10 @@ import java.util.List;
 public class UserManager
 {
        
-    public UserVO consultar (final String id)
+    public UserVO consultar (final String name)
     {
         UserDao dao = new UserDao();
-        UserVO user = dao.findById("" + id);
+        UserVO user = dao.findByName("" + name);
         
         return user;
     }
