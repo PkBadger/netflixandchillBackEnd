@@ -88,7 +88,9 @@ public class ChillToServlet extends HttpServlet {
               users.add(usuario);
           }
           String json = new Gson().toJson(users);
+          String json2 = new Gson().toJson(movies);
           out.println(json);
+          out.println(json2);
         } catch (ServletException e) {
           response.setStatus(400);
           response.resetBuffer();
