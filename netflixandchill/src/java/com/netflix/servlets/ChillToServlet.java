@@ -112,15 +112,17 @@ public class ChillToServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         UserManager manager = new UserManager();
+         ChillManager manager = new ChillManager();
          BufferedReader br = request.getReader();
          Gson gson = new Gson();
          Properties data = gson.fromJson(br, Properties.class);
-         String username = data.getProperty("name");
-         UserVO user = manager.consultar(username);
+         String usrId = data.getProperty("fromId");
+         String usrTo = data.getProperty("toId");
          ChillVO chill = new ChillVO();
-         chill.setTo(user.getId());
-         String json = new Gson().toJson(user);
+         chill.setFrom(usrId);
+         chill.setTo(usrTo);
+         manager.create(chill);
+     
     }
     
     @Override
