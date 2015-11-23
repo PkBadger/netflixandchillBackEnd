@@ -125,7 +125,6 @@ public class ChillToServlet extends HttpServlet {
          chill.setFrom(usrId);
          chill.setTo(usrTo);
          manager.create(chill);
-         out.println("chill deleted");
      
     }
     

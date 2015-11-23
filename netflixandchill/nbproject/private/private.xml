@@ -8,8 +8,10 @@
             <file>file:/C:/Users/Alejandro/Desktop/netflixandchillBackEnd/netflixandchill/src/java/com/netflix/vo/ChillVO.java</file>
             <file>file:/C:/Users/Alejandro/Desktop/netflixandchillBackEnd/netflixandchill/src/java/com/netflix/servlets/RegisterServlet.java</file>
             <file>file:/C:/Users/Alejandro/Desktop/netflixandchillBackEnd/netflixandchill/src/java/com/netflix/manager/UserManager.java</file>
+            <file>file:/C:/Users/Alejandro/Desktop/netflixandchillBackEnd/netflixandchill/src/java/com/netflix/manager/ChillManager.java</file>
             <file>file:/C:/Users/Alejandro/Desktop/netflixandchillBackEnd/netflixandchill/src/java/com/netflix/servlets/ChillFromServlet.java</file>
             <file>file:/C:/Users/Alejandro/Desktop/netflixandchillBackEnd/netflixandchill/src/java/com/netflix/servlets/MovieUserServlet.java</file>
+            <file>file:/C:/Users/Alejandro/Desktop/netflixandchillBackEnd/netflixandchill/src/java/com/netflix/dao/ChillDAO.java</file>
             <file>file:/C:/Users/Alejandro/Desktop/netflixandchillBackEnd/netflixandchill/src/java/com/netflix/servlets/ChillToServlet.java</file>
         </group>
     </open-files>
