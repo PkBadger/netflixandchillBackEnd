@@ -24,6 +24,10 @@
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>com.netflix.servlets.RegisterServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetUserServlet</servlet-name>
+        <servlet-class>com.netflix.servlets.GetUserServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserMovieServlet</servlet-name>
         <url-pattern>/findByUser/*</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/register/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetUserServlet</servlet-name>
+        <url-pattern>/users/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
