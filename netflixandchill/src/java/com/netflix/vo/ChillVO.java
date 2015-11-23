@@ -5,8 +5,8 @@ import java.io.Serializable;
 public class ChillVO implements Serializable
 {
     private String id;
-    private String from;
-    private String to;
+    private String from_id;
+    private String to_id;
 
     /**
      * @return the id
@@ -29,7 +29,7 @@ public class ChillVO implements Serializable
      */
     public String getFrom()
     {
-        return from;
+        return from_id;
     }
 
     /**
@@ -37,7 +37,7 @@ public class ChillVO implements Serializable
      */
     public void setFrom(String from)
     {
-        this.from = from;
+        this.from_id = from;
     }
 
     /**
@@ -45,7 +45,7 @@ public class ChillVO implements Serializable
      */
     public String getTo()
     {
-        return to;
+        return to_id;
     }
 
     /**
@@ -53,14 +53,14 @@ public class ChillVO implements Serializable
      */
     public void setTo(String to)
     {
-        this.to = to;
+        this.to_id = to;
     }
 
 
     @Override
     public String toString()
     {
-        return this.id + " " + this.from;
+        return this.id + " " + this.from_id;
     }
  
    
