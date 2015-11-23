@@ -20,7 +20,7 @@ public class ChillDAO {
             /* EXAMEN */
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ejemplo?user=root&password=admin");
-            PreparedStatement pstmt = conn.prepareStatement("SELECT id, fr,to FROM chill WHERE chill.fr =?");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT id, fr,to_id FROM chill WHERE chill.fr =?");
             pstmt.setString(1, id);
             ResultSet rs = pstmt.executeQuery();
             //Se itera sobre el ResultSet, tomando los parametros
@@ -56,7 +56,7 @@ public class ChillDAO {
             /* EXAMEN */
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ejemplo?user=root&password=admin");
-            PreparedStatement pstmt = conn.prepareStatement("SELECT id, fr,to FROM chill WHERE chill.to =?");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT id, fr,to_id FROM chill WHERE chill.to =?");
             pstmt.setString(1, id);
             ResultSet rs = pstmt.executeQuery();
             //Se itera sobre el ResultSet, tomando los parametros
@@ -120,7 +120,7 @@ public class ChillDAO {
 
             
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ejemplo?user=root&password=admin");
-            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO chill (fr, to) "
+            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO chill (fr, to_id) "
                     + "                                      VALUES (?, ?)");
             //Se realiza el statement SQL, se pasa el id 1 a persona.id
             pstmt.setString(1, from);

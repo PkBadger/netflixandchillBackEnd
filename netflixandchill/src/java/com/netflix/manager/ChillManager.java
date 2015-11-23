@@ -4,7 +4,6 @@ package com.netflix.manager;
 
 import com.netflix.dao.ChillDAO;
 import com.netflix.vo.ChillVO;
-import java.sql.SQLException;
 import java.util.List;
 
 
@@ -24,7 +23,7 @@ public class ChillManager
     
     public List<ChillVO> findFrom (final String id)
     {
-         ChillDAO dao = new ChillDAO();
+        ChillDAO dao = new ChillDAO();
         List<ChillVO > movie = dao.findFrom(id);
                 
         return movie;
