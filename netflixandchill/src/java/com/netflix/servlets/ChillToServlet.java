@@ -6,6 +6,7 @@
 package com.netflix.servlets;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.netflix.manager.ChillManager;
 import com.netflix.manager.UserManager;
 import com.netflix.manager.UserMovieManager;
@@ -88,9 +89,8 @@ public class ChillToServlet extends HttpServlet {
               users.add(usuario);
           }
           String json = new Gson().toJson(users);
-          String json2 = new Gson().toJson(movies);
           out.println(json);
-          out.println(json2);
+          
         } catch (ServletException e) {
           response.setStatus(400);
           response.resetBuffer();
@@ -116,6 +116,7 @@ public class ChillToServlet extends HttpServlet {
             throws ServletException, IOException {
          ChillManager manager = new ChillManager();
          BufferedReader br = request.getReader();
+            PrintWriter out = response.getWriter();
          Gson gson = new Gson();
          Properties data = gson.fromJson(br, Properties.class);
          String usrId = data.getProperty("fromId");
@@ -124,6 +125,7 @@ public class ChillToServlet extends HttpServlet {
          chill.setFrom(usrId);
          chill.setTo(usrTo);
          manager.create(chill);
+         out.println("chill deleted");
      
     }
     
@@ -134,9 +136,10 @@ public class ChillToServlet extends HttpServlet {
          BufferedReader br = request.getReader();
          Gson gson = new Gson();
          Properties data = gson.fromJson(br, Properties.class);
-         String username = data.getProperty("name");
-         manager.eliminar(username);
-        
+         String from = data.getProperty("from_id");
+         String to = data.getProperty("to_id");
+         manager.eliminar(from, to);
+         
     }
 
     /**

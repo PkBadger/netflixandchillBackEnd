@@ -36,9 +36,9 @@ public class ChillManager
         return movie;
     }
     
-    public void eliminar(final String id) {
+    public void eliminar(final String from_id, final String to_id) {
        ChillDAO dao = new ChillDAO();
-        dao.delete(id);
+        dao.delete(from_id, to_id);
     }
     
     public void create(final ChillVO chill) {

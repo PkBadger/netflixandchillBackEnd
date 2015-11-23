@@ -86,13 +86,14 @@ public class ChillDAO {
         return chills;
     }
 
-    public void delete(final String id) {
+    public void delete(final String from_id, final String to_id) {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ejemplo?user=root&password=admin");
-            PreparedStatement pstmt = conn.prepareStatement("DELETE FROM chill WHERE chill.id = ?");
+            PreparedStatement pstmt = conn.prepareStatement("DELETE FROM chill WHERE chill.from_id = ? AND chill.to_id = ?");
             //Se realiza el statement SQL, se pasa el id 1 a persona.id
-            pstmt.setString(1, id);
+            pstmt.setString(1, from_id);
+            pstmt.setString(2, to_id);
             pstmt.executeUpdate(); //SE EJECUTA EL QUERY
             pstmt.close();
             conn.close();
