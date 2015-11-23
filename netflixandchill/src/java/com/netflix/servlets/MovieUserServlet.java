@@ -98,7 +98,21 @@ public class MovieUserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                
+         UserMovieManager manager = new UserMovieManager();
+         PrintWriter out = response.getWriter();
+                 try {
+          RestRequest resourceValues = new RestRequest(request.getPathInfo());
+          int id = resourceValues.getId();
+          UserMovieVO userMovie = new UserMovieVO();
+          userMovie.setMovieId(String.valueOf(id));
+          out.println("MovieUser added.");
+        } catch (ServletException e) {
+          response.setStatus(400);
+          response.resetBuffer();
+          e.printStackTrace();
+          out.println(e.toString());
+        }
+        out.close();      
     }
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
