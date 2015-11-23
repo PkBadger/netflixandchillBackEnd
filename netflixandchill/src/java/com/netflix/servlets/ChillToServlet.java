@@ -7,12 +7,16 @@ package com.netflix.servlets;
 
 import com.google.gson.Gson;
 import com.netflix.manager.ChillManager;
+import com.netflix.manager.UserManager;
 import com.netflix.manager.UserMovieManager;
 import com.netflix.vo.ChillVO;
 import com.netflix.vo.UserMovieVO;
+import com.netflix.vo.UserVO;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.servlet.ServletException;
@@ -100,26 +104,26 @@ public class ChillToServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                
+         UserManager manager = new UserManager();
+         BufferedReader br = request.getReader();
+         Gson gson = new Gson();
+         Properties data = gson.fromJson(br, Properties.class);
+         String username = data.getProperty("name");
+         UserVO user = manager.consultar(username);
+         ChillVO chill = new ChillVO();
+         chill.setTo(user.getId());
+         String json = new Gson().toJson(user);
     }
     
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         UserMovieManager manager = new UserMovieManager();
-         PrintWriter out = response.getWriter();
-                 try {
-          RestRequest resourceValues = new RestRequest(request.getPathInfo());
-          int id = resourceValues.getId();
-          manager.eliminar(String.valueOf(id));
-          out.println("MovieUser deleted.");
-        } catch (ServletException e) {
-          response.setStatus(400);
-          response.resetBuffer();
-          e.printStackTrace();
-          out.println(e.toString());
-        }
-        out.close();
+         ChillManager manager = new ChillManager();
+         BufferedReader br = request.getReader();
+         Gson gson = new Gson();
+         Properties data = gson.fromJson(br, Properties.class);
+         String username = data.getProperty("name");
+         manager.eliminar(username);
         
     }
 

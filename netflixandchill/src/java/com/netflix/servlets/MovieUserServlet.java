@@ -105,7 +105,7 @@ public class MovieUserServlet extends HttpServlet {
          BufferedReader br = request.getReader();
          Gson gson = new Gson();
          Properties data = gson.fromJson(br, Properties.class);
-         String movieId = data.getProperty("movieId");
+         String movieId = data.getProperty("imdbId");
          String userid = data.getProperty("usrId");
          UserMovieVO userMovie = new UserMovieVO();
          userMovie.setMovieId(String.valueOf(movieId));
