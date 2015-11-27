@@ -49,10 +49,12 @@ public class MovieUserServlet extends HttpServlet {
       throw new ServletException("Invalid URI");
     }
  
+    //get Id
     public Integer getId() {
       return id;
     }
  
+    //Set Id
     public void setId(Integer id) {
       this.id = id;
     }
@@ -115,6 +117,14 @@ public class MovieUserServlet extends HttpServlet {
          out.println(json);
         out.close();      
     }
+
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -145,5 +155,4 @@ public class MovieUserServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

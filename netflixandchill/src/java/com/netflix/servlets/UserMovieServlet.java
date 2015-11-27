@@ -50,10 +50,12 @@ public class UserMovieServlet extends HttpServlet {
       throw new ServletException("Invalid URI");
     }
  
+    //Get Id
     public Integer getId() {
       return id;
     }
  
+    //Set Id
     public void setId(Integer id) {
       this.id = id;
     }
@@ -112,6 +114,13 @@ public class UserMovieServlet extends HttpServlet {
          out.close();
     }
     
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

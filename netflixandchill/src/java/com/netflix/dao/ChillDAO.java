@@ -10,14 +10,20 @@ import java.util.List;
 import com.netflix.vo.ChillVO;
 import com.mysql.jdbc.Connection;
 
-
+/**
+ *
+ * @author Dave
+ */
 public class ChillDAO {
 
-
+    /**
+     *
+     * @param id
+     * @return
+     */
     public List<ChillVO> findFrom(final String id) {
         List<ChillVO> chills = new ArrayList<ChillVO>();
         try {
-            /* EXAMEN */
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ejemplo?user=root&password=admin");
             PreparedStatement pstmt = conn.prepareStatement("SELECT id, from_id,to_id FROM chill WHERE chill.to_id =?");
@@ -50,10 +56,14 @@ public class ChillDAO {
         return chills;
     }
     
-   public List<ChillVO> findTo(final String id) {
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public List<ChillVO> findTo(final String id) {
         List<ChillVO> chills = new ArrayList<ChillVO>();
         try {
-            /* EXAMEN */
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ejemplo?user=root&password=admin");
             PreparedStatement pstmt = conn.prepareStatement("SELECT id, from_id,to_id FROM chill WHERE chill.from_id =?");
@@ -86,6 +96,11 @@ public class ChillDAO {
         return chills;
     }
 
+    /**
+     *
+     * @param from_id
+     * @param to_id
+     */
     public void delete(final String from_id, final String to_id) {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -109,6 +124,13 @@ public class ChillDAO {
         
     }
     
+    /**
+     *
+     * @param id
+     * @param from
+     * @param to
+     * @return
+     */
     public ChillVO create(final String id, final String from, final String to) {
       ChillVO chill = new ChillVO();
         try {
@@ -150,12 +172,7 @@ public class ChillDAO {
             e.printStackTrace();
         }
         return chill;
-
-       
-        
-        
+     
     }
-
-    
 
 }

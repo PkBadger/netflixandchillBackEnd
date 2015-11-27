@@ -54,11 +54,13 @@ public class ChillToServlet extends HttpServlet {
  
       throw new ServletException("Invalid URI");
     }
- 
+    
+    //get Id
     public Integer getId() {
       return id;
     }
  
+    //Set Id
     public void setId(Integer id) {
       this.id = id;
     }
@@ -128,6 +130,13 @@ public class ChillToServlet extends HttpServlet {
      
     }
     
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -151,6 +160,10 @@ public class ChillToServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
     
+    /**
+     *
+     * @param args
+     */
     public static void main ( String args []) {
         ChillManager manager = new ChillManager();
         UserManager umanager = new UserManager();

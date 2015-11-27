@@ -51,11 +51,13 @@ public class ChillFromServlet extends HttpServlet {
  
       throw new ServletException("Invalid URI");
     }
- 
+     
+    //Returns id
     public Integer getId() {
       return id;
     }
  
+    //Set the id
     public void setId(Integer id) {
       this.id = id;
     }

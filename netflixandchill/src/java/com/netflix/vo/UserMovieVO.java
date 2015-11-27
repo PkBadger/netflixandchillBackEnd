@@ -2,6 +2,10 @@ package com.netflix.vo;
 
 import java.io.Serializable;
 
+/**
+ *
+ * @author Dave
+ */
 public class UserMovieVO implements Serializable
 {   
     private String id;
@@ -27,20 +31,36 @@ public class UserMovieVO implements Serializable
         this.id = id;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getUserId()
     {
         return userid;
     }
     
+    /**
+     *
+     * @param userid
+     */
     public void setUserId(String userid)
     {
         this.userid = userid;
     }  
     
+    /**
+     *
+     * @return
+     */
     public String getMovieId() {
         return movieid;
     }
     
+    /**
+     *
+     * @param movieid
+     */
     public void setMovieId(String movieid) {
         this.movieid = movieid;
     }

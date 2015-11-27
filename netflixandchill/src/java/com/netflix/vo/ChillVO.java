@@ -2,6 +2,10 @@ package com.netflix.vo;
 
 import java.io.Serializable;
 
+/**
+ *
+ * @author Dave
+ */
 public class ChillVO implements Serializable
 {
     private String id;
@@ -33,6 +37,7 @@ public class ChillVO implements Serializable
     }
 
     /**
+     * @param from
      * @param nombre the nombre to set
      */
     public void setFrom(String from)
@@ -49,6 +54,7 @@ public class ChillVO implements Serializable
     }
 
     /**
+     * @param to
      * @param apellidoPaterno the apellidoPaterno to set
      */
     public void setTo(String to)

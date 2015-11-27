@@ -71,6 +71,10 @@ public class RegisterServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
     
+    /**
+     *
+     * @param args
+     */
     public static void main(String args[]) {
         UserManager managers = new UserManager();
          UserVO user = new UserVO();

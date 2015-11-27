@@ -10,14 +10,19 @@ import java.util.List;
 import com.netflix.vo.MovieVO;
 import com.mysql.jdbc.Connection;
 
-
+/**
+ *
+ * @author Dave
+ */
 public class MovieDao {
 
-
+    /**
+     *
+     * @return
+     */
     public List<MovieVO> findAll() {
         List<MovieVO> movies = new ArrayList<MovieVO>();
         try {
-            /* EXAMEN */
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ejemplo?user=root&password=admin");
             PreparedStatement pstmt = conn.prepareStatement("SELECT id, title,genre FROM movie ORDER BY title");
@@ -48,7 +53,12 @@ public class MovieDao {
         return movies;
     }
     
-     public List<MovieVO> findByGenre(final String Genre) {
+    /**
+     *
+     * @param Genre
+     * @return
+     */
+    public List<MovieVO> findByGenre(final String Genre) {
         List<MovieVO> movies = new ArrayList<MovieVO>();
         try {
             /* EXAMEN */
@@ -83,16 +93,16 @@ public class MovieDao {
         return movies;
     }
 
-   /* public static void main(String[] args) {
-        PersonaDAO dao = new PersonaDAO();
-        System.out.println(dao.findById("1"));
-    }*/
-
+    /**
+     *
+     * @param id
+     * @return
+     */
+    
     public MovieVO findById(final String id) {
         //ENCUENTRA POR ID LA RESPECTIVA PERSONA EN LA DATABASE
         MovieVO movie = null;
         try {
-            /* EXAMEN */
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ejemplo?user=root&password=admin");
             PreparedStatement pstmt = conn.prepareStatement("SELECT id, title, genre FROM movie WHERE movie.id =?");
@@ -119,6 +129,10 @@ public class MovieDao {
         return movie;
     }
     
+    /**
+     *
+     * @param id
+     */
     public void delete(final String id) {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -141,16 +155,21 @@ public class MovieDao {
         
     }
     
+    /**
+     *
+     * @param id
+     * @param title
+     * @param genre
+     * @return
+     */
     public MovieVO create(final String id, final String title, final String genre) {
       MovieVO movie = new MovieVO();
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            
-            
+               
             movie.setId(id);
             movie.setTitle(title);
             movie.setGenre(genre);
-
             
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ejemplo?user=root&password=admin");
             PreparedStatement pstmt = conn.prepareStatement("INSERT INTO movie (title, genre) "
@@ -182,11 +201,7 @@ public class MovieDao {
             e.printStackTrace();
         }
         return movie;
-
-       
-        
-        
+  
     }
     
-
 }

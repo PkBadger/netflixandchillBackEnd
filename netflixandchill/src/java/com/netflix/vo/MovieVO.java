@@ -2,6 +2,10 @@ package com.netflix.vo;
 
 import java.io.Serializable;
 
+/**
+ *
+ * @author Dave
+ */
 public class MovieVO implements Serializable
 {
     private String id;
@@ -33,7 +37,7 @@ public class MovieVO implements Serializable
     }
 
     /**
-     * @param nombre the nombre to set
+     * @param title
      */
     public void setTitle(String title)
     {

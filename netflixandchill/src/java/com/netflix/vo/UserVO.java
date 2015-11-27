@@ -2,6 +2,10 @@ package com.netflix.vo;
 
 import java.io.Serializable;
 
+/**
+ *
+ * @author Dave
+ */
 public class UserVO implements Serializable
 {
     private String id;
@@ -17,11 +21,20 @@ public class UserVO implements Serializable
     {
         return email;
     }
+
+    /**
+     *
+     * @param correo
+     */
     public void setEmail(String correo)
     {
         this.email = correo;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getId()
     {
         return id;
@@ -44,6 +57,7 @@ public class UserVO implements Serializable
     }
 
     /**
+     * @param username
      * @param nombre the nombre to set
      */
     public void setUsername(String username)
@@ -60,6 +74,7 @@ public class UserVO implements Serializable
     }
 
     /**
+     * @param phone
      * @param apellidoPaterno the apellidoPaterno to set
      */
     public void setPhone(String phone)
@@ -68,13 +83,17 @@ public class UserVO implements Serializable
     }
 
     /**
-     * @param apellidoMaterno the apellidoMaterno to set
+     * @param password
      */
     public void setPassword(String password)
     {
         this.password = password;
     }
     
+    /**
+     *
+     * @return
+     */
     public String getPassword()
     {
         return password;

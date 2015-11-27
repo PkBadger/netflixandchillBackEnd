@@ -7,20 +7,18 @@ import com.netflix.vo.UserMovieVO;
 import java.sql.SQLException;
 import java.util.List;
 
-
-
+/**
+ *
+ * @author Dave
+ */
 public class UserMovieManager
 {
-    /*  
-    public UserMovieVO consultar (final String id)
-    {
-        UserMovieDAO dao = new UserMovieDAO();
-        UserMovieVO  movie = dao.findById("" + id);
-        
-        return movie;
-    }*/
-    
-    
+
+    /**
+     *
+     * @param id
+     * @return
+     */
     
     public List<UserMovieVO > findByMovie (final String id)
     {
@@ -29,7 +27,13 @@ public class UserMovieManager
                 
         return movie;
     }
-     public List<UserMovieVO > findByUser (final String id)
+
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public List<UserMovieVO > findByUser (final String id)
     {
         UserMovieDAO dao = new UserMovieDAO();
         List<UserMovieVO > movie = dao.findbyUser(id);
@@ -37,11 +41,19 @@ public class UserMovieManager
         return movie;
     }
     
+    /**
+     *
+     * @param id
+     */
     public void eliminar(final String id) {
         UserMovieDAO dao = new UserMovieDAO();
         dao.delete(id);
     }
     
+    /**
+     *
+     * @param UserMovie
+     */
     public void create(final UserMovieVO UserMovie) {
         UserMovieDAO dao = new UserMovieDAO();
        dao.create(UserMovie.getId(), UserMovie.getUserId(), UserMovie.getMovieId());

@@ -10,15 +10,19 @@ import java.util.List;
 import com.netflix.vo.UserVO;
 import com.mysql.jdbc.Connection;
 
-
-
+/**
+ *
+ * @author Dave
+ */
 public class UserDao {
 
-
+    /**
+     *
+     * @return
+     */
     public List<UserVO> findAll() {
         List<UserVO> users = new ArrayList<UserVO>();
         try {
-            /* EXAMEN */
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ejemplo?user=root&password=admin");
             PreparedStatement pstmt = conn.prepareStatement("SELECT id, username,phone,email FROM user ORDER BY username");
@@ -51,16 +55,16 @@ public class UserDao {
         return users;
     }
 
-   /* public static void main(String[] args) {
-        PersonaDAO dao = new PersonaDAO();
-        System.out.println(dao.findById("1"));
-    }*/
+    /**
+     *
+     * @param id
+     * @return
+     */
 
     public UserVO findByName(final String id) {
         //ENCUENTRA POR ID LA RESPECTIVA PERSONA EN LA DATABASE
         UserVO user = null;
         try {
-            /* EXAMEN */
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ejemplo?user=root&password=admin");
             PreparedStatement pstmt = conn.prepareStatement("SELECT id, username,phone,email  FROM user WHERE user.username =?");
@@ -88,11 +92,15 @@ public class UserDao {
         return user;
     }
     
+    /**
+     *
+     * @param id
+     * @return
+     */
     public UserVO findById(final String id) {
         //ENCUENTRA POR ID LA RESPECTIVA PERSONA EN LA DATABASE
         UserVO user = null;
         try {
-            /* EXAMEN */
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ejemplo?user=root&password=admin");
             PreparedStatement pstmt = conn.prepareStatement("SELECT id, username,phone,email  FROM user WHERE user.id =?");
@@ -120,19 +128,26 @@ public class UserDao {
         return user;
     }
     
-   public UserVO create(final String id, final String username, final String phone, final String password, final String Email) {
+    /**
+     *
+     * @param id
+     * @param username
+     * @param phone
+     * @param password
+     * @param Email
+     * @return
+     */
+    public UserVO create(final String id, final String username, final String phone, final String password, final String Email) {
       UserVO user = new UserVO();
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            
-            
+
             user.setId(id);
             user.setUsername(username);
             user.setPhone(phone);
             user.setPassword(password);
             user.setEmail(Email);
 
-            
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/ejemplo?user=root&password=admin");
             PreparedStatement pstmt = conn.prepareStatement("INSERT INTO user (username, phone,password,email) "
                     + "                                      VALUES (?, ?, ?, ?)");
@@ -168,9 +183,6 @@ public class UserDao {
             e.printStackTrace();
         }
         return user;
-
-       
-        
         
     }
     
